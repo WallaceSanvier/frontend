@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 
-
 import api from "../../services/api";
-import {Container} from "./styled";
+import { Container } from "./styled";
 
-export default function Profile() {
+export default function ToolList() {
   const [tools, setTools] = useState([]);
 
   const history = useHistory();
@@ -24,8 +23,6 @@ export default function Profile() {
       });
   }, [userId]);
 
-
-
   function handleLogout() {
     localStorage.clear();
 
@@ -34,65 +31,63 @@ export default function Profile() {
 
   return (
     <>
-    <Container>
-    <div className="exit">
-      <button className="exit"  onClick={handleLogout} type="exit">
-      <Link  to="/">
-          Sair
-      </Link>
-      </button>
-      </div>
-
-    <div className="profile-container">
-      <header>
-      <div >
-          <Link style={{ background: "yellow" ,color: "black"  }}className="button" to="/tools/new">
-            Cadastrar nova ferramenta
-          </Link>
-          
-          <Link
-            className="button"
-            style={{ background: "green" }}
-            to="/profile"
-          >
-            Ver as minhas Ferramentas
-          </Link>
-         
+      <Container>
+        <div className="exit">
+          <button className="exit" onClick={handleLogout} type="exit">
+            <Link to="/">Sair</Link>
+          </button>
         </div>
-      </header>
 
-      <h1>Todas as Ferramentas do Condominio</h1>
+        <div className="profile-container">
+          <header>
+            <div>
+              <Link
+                style={{ background: "yellow", color: "black" }}
+                className="button"
+                to="/tools/new"
+              >
+                Cadastrar nova ferramenta
+              </Link>
 
-      <ul>
-        {tools.map((tool) => (
-          <li key={tool.id}>
+              <Link
+                className="button"
+                style={{ background: "green" }}
+                to="/profile"
+              >
+                Ver as minhas Ferramentas
+              </Link>
+            </div>
+          </header>
 
-            <strong>Dono</strong>
-            <p>{tool.name}</p>
+          <h1>Todas as Ferramentas do Condominio</h1>
 
-            <strong>Whatsaap</strong>
-            <p>{tool.whatsapp}</p>
+          <ul>
+            {tools.map((tool) => (
+              <li key={tool.id}>
+                <strong>Dono</strong>
+                <p>{tool.name}</p>
 
-            <strong>FERRAMENTA:</strong>
-            <p>{tool.title}</p>
+                <strong>Whatsaap</strong>
+                <p>{tool.whatsapp}</p>
 
-            <strong>DESCRIÇÃO:</strong>
-            <p>{tool.description}</p>
+                <strong>FERRAMENTA:</strong>
+                <p>{tool.title}</p>
 
-            <strong>VALOR:</strong>
-            <p>
-              {Intl.NumberFormat("pt-BR", {
-                style: "currency",
-                currency: "BRL",
-              }).format(tool.value)}
-            </p>
+                <strong>DESCRIÇÃO:</strong>
+                <p>{tool.description}</p>
 
-            
-          </li>
-        ))}
-      </ul>
-    </div>
-    </Container>
+                <strong>VALOR:</strong>
+                <p>
+                  {Intl.NumberFormat("pt-BR", {
+                    style: "currency",
+                    currency: "BRL",
+                  }).format(tool.value)}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </Container>
     </>
   );
 }

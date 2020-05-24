@@ -4,10 +4,9 @@ import { FiLogIn } from "react-icons/fi";
 
 import api from "../../services/api";
 
-import {Container} from  "./styled";
+import { Container } from "./styled";
 
 import logoImg from "../../assets/tools.png";
-
 
 export default function Logon() {
   const [id, setId] = useState("");
@@ -28,40 +27,38 @@ export default function Logon() {
   }
 
   return (
-      <>
-    <Container>
+    <>
+      <Container>
+        <div className="Logon-container">
+          <section className="form">
+            <img className="img" src={logoImg} alt="tools" />
 
-    <div className="Logon-container">
-      <section className="form">
-        <img  className="img" src={logoImg} alt="tools" />
+            <form onSubmit={handleLogin}>
+              <h1>Faça seu login</h1>
 
-        <form onSubmit={handleLogin}>
-          <h1>Faça seu login</h1>
+              <input
+                className="input"
+                placeholder="Sua ID"
+                value={id}
+                onChange={(e) => setId(e.target.value)}
+              />
 
-          <input className="input"
-            placeholder="Sua ID"
-            value={id}
-            onChange={(e) => setId(e.target.value)}
-          />
+              <button className="button" type="submit">
+                Entrar
+              </button>
 
-          <button className="button" type="submit">
-            Entrar
-          </button>
-
-          <Link className="back-link" to="/register">
-            <FiLogIn size={16} color="#E02041" />
-            Não tenho cadastro
-          </Link>
-        </form>
-      </section>
-
-      </div>
-     
-
+              <Link className="back-link" to="/register">
+                <FiLogIn size={16} color="#E02041" />
+                Não tenho cadastro
+              </Link>
+              <Link className="back-link" to="/about">
+                <FiLogIn size={16} color="#E02041" />
+                Sobre
+              </Link>
+            </form>
+          </section>
+        </div>
       </Container>
-      
-
-      </>
-    
+    </>
   );
 }

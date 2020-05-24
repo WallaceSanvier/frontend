@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Logon from './pages/Logon';
+import About from './pages/About';
 import Register from './pages/Register';
 import Profile from './pages/Profile';
 import NewTool from './pages/NewTool';
@@ -12,6 +13,7 @@ export default function Routes() {
         <BrowserRouter>
             <Switch>
                 <Route path="/" exact component={Logon} />
+                <Route path="/about" component={About} />
                 <Route path="/register" component={Register} />
 
                 <Route path="/profile" component={Profile} />
