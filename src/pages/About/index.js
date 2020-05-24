@@ -23,6 +23,8 @@ function About() {
               <br />
               -Reactjs
               <br />
+              -Styled Components (Css)
+              <br />
               -Sqlite
             </p>
           </div>
